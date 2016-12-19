@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:O2.ContactAssignment"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Closed="Window_Closed">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+            <Button Name="ImportListBtn" Margin="5" Click="ImportListBtn_Click">Liste importieren</Button>
+            <Label>Filter:</Label>
+            <ComboBox Name="ColleagueBox" ItemsSource="{Binding Path=AllColleagues}" SelectedItem="{Binding Path=DudeSelected}" SelectionChanged="ColleagueBox_SelectionChanged" Margin="5"></ComboBox>
+            <Button Name="ResetHakenBtn" Click="ResetHakenBtn_Click" Margin="5">Reset Haken</Button>
+            <Button Name="PrintListButton" Click="PrintListButton_Click" Margin="5">Listen drucken</Button>
+        </StackPanel>
+        <DataGrid Name="CustomerList" Grid.Row="1" ItemsSource="{Binding Path=CstView}" SelectionMode="Single">
+
+        </DataGrid>
     </Grid>
 </Window>
